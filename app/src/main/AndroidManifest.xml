@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:name=".base.MyApplication"
+        android:theme="@style/Theme.Shadowpluginmaster">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--container 注册
+        注意configChanges需要全注册
+        theme需要注册成透明
+
+        这些类不打包在host中，打包在runtime中，以便减少宿主方法数增量
+        Activity 路径需要和插件中的匹配，后面会说到
+        -->
+        <activity
+            android:name="com.casic.titan.plugin_runtime.PluginDefaultProxyActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:theme="@style/PluginContainerActivity"
+            android:exported="true"
+            android:multiprocess="true" />
+
+        <activity
+            android:name="com.casic.titan.plugin_runtime.PluginSingleInstance1ProxyActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:exported="true"
+            android:theme="@style/PluginContainerActivity"
+            android:multiprocess="true" />
+
+        <activity
+            android:name="com.casic.titan.plugin_runtime.PluginSingleTask1ProxyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
+            android:hardwareAccelerated="true"
+            android:theme="@style/PluginContainerActivity"
+            android:multiprocess="true"  />
+
+        <activity android:name="com.casic.titan.user.LoginActivity"
+            android:exported="true"/>
+
+        <provider
+            android:authorities="${applicationId}.contentprovider.authority.dynamic"
+            android:exported="true"
+            android:name="com.tencent.shadow.core.runtime.container.PluginContainerContentProvider"
+            android:grantUriPermissions="true"
+            android:process=":plugin" />
+
+        <service
+            android:name=".plugin_manager.MainPluginProcessService"
+            android:exported="true"
+            android:process=":plugin" />
+        <service
+            android:name=".plugin_manager.UserPluginProcessService"
+            android:exported="true"
+            android:process=":plugin_user" />
+    </application>
+
+</manifest>

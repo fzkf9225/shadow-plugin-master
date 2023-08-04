@@ -1,0 +1,30 @@
+pluginManagement {
+    repositories {
+        maven {setUrl("https://localhost:9224/repository/casic_group/")}
+        maven { setUrl("https://mirrors.tencent.com/nexus/repository/maven-public/") }
+        google()
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven {setUrl("https://localhost:9224/repository/casic_group/")}
+        maven { setUrl("https://mirrors.tencent.com/nexus/repository/maven-public/") }
+        google()
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "shadow-plugin-master"
+include ':app'
+include ':plugin-loader'
+include ':constant'
+include ':plugin-manager'
+include ':plugin-runtime'
+include ':plugin-app'
+include ':common'
+include ':plugin-user'

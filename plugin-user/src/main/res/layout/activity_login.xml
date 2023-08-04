@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fafafa">
+
+        <LinearLayout
+            android:id="@+id/edit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rounded_white_16"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/user_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:hint="请输入手机号码"
+                    android:imeOptions="actionNext"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    android:paddingStart="16dp"
+                    android:text="@={loginBean.username}"
+                    android:paddingEnd="16dp"
+                    android:textAppearance="?android:attr/textAppearanceLargeInverse"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/line_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#dddddd" />
+
+                <EditText
+                    android:id="@+id/password_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@null"
+                    android:focusable="true"
+                    android:hint="请输入密码"
+                    android:text="@={loginBean.password}"
+                    android:imeOptions="actionDone"
+                    android:includeFontPadding="false"
+                    android:inputType="textPassword"
+                    android:maxLength="16"
+                    android:maxLines="1"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textAppearance="?android:attr/textAppearanceLargeInverse"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/login_submit"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/edit_layout"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="54dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/round_login_button_48"
+                android:text="登录"
+                android:onClick="@{(view) ->loginViewModel.loginClick(view,loginBean)}"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <data>
+
+        <variable
+            name="loginBean"
+            type="com.casic.titan.user.RequestLoginBean" />
+
+        <variable
+            name="loginViewModel"
+            type="com.casic.titan.user.LoginViewModel" />
+    </data>
+</layout>

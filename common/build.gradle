@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'com.casic.titan.common'
+    compileSdk project.COMPILE_SDK_VERSION
+
+    defaultConfig {
+//        applicationId "com.casic.titan.common"
+        minSdk project.MIN_SDK_VERSION
+        targetSdk project.TARGET_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.create("release")
+            signingConfig.initWith(buildTypes.debug.signingConfig)
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding{
+        enabled = true
+    }
+    lintOptions {
+        abortOnError false
+    }
+    // 将插件的资源ID分区改为和宿主0x7F不同的值
+    aaptOptions {
+        additionalParameters "--package-id", "0x7E", "--allow-reserved-package-id"
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+
+}

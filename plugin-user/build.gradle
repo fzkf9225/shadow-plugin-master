@@ -1,0 +1,83 @@
+buildscript {//这个模块要放在plugins {} 之前
+    repositories {
+        maven { setUrl("https://localhost:9224/repository/casic_group/") }
+        maven { setUrl("https://mirrors.tencent.com/nexus/repository/maven-public/") }
+        google()
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.tencent.shadow.core:runtime:$shadow_version"
+        classpath "com.tencent.shadow.core:activity-container:$shadow_version"
+        classpath "com.tencent.shadow.core:gradle-plugin:$shadow_version"
+        classpath "org.javassist:javassist:$javassist_version"
+    }
+}
+
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.tencent.shadow.plugin'
+
+
+android {
+    namespace 'com.casic.titan.user'
+    compileSdk project.COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId "com.casic.titan.user"
+        minSdk project.MIN_SDK_VERSION
+        targetSdk project.TARGET_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.create("release")
+            signingConfig.initWith(buildTypes.debug.signingConfig)
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding{
+        enabled = true
+    }
+    lintOptions {
+        abortOnError false
+    }
+    // 将插件applicationId设置为和宿主相同
+    productFlavors {
+        plugin {
+            applicationId project.SAMPLE_HOST_APP_APPLICATION_ID
+        }
+    }
+    // 将插件的资源ID分区改为和宿主0x7F不同的值
+    aaptOptions {
+        additionalParameters "--package-id", "0x7E", "--allow-reserved-package-id"
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+    compileOnly "com.tencent.shadow.core:runtime:$shadow_version"
+    implementation project(":common")
+}
+
