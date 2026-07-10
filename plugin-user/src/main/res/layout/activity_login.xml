@@ -88,10 +88,10 @@
 
         <variable
             name="loginBean"
-            type="com.casic.titan.user.RequestLoginBean" />
+            type="io.coderf.arklab.user.RequestLoginBean" />
 
         <variable
             name="loginViewModel"
-            type="com.casic.titan.user.LoginViewModel" />
+            type="io.coderf.arklab.user.LoginViewModel" />
     </data>
 </layout>

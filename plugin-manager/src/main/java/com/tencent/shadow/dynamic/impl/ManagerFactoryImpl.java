@@ -20,7 +20,7 @@ package com.tencent.shadow.dynamic.impl;
 
 import android.content.Context;
 
-import com.casic.titan.plugin_manager.SamplePluginManager;
+import io.coderf.arklab.plugin_manager.SamplePluginManager;
 import com.tencent.shadow.dynamic.host.ManagerFactory;
 import com.tencent.shadow.dynamic.host.PluginManagerImpl;
 

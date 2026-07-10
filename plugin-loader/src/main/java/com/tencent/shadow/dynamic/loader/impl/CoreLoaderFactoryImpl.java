@@ -2,7 +2,7 @@ package com.tencent.shadow.dynamic.loader.impl;
 
 import android.content.Context;
 
-import com.casic.titan.plugin_loader.SamplePluginLoader;
+import io.coderf.arklab.plugin_loader.SamplePluginLoader;
 import com.tencent.shadow.core.loader.ShadowPluginLoader;
 
 import org.jetbrains.annotations.NotNull;

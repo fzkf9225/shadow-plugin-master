@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace "com.casic.titan.plugin_runtime"
+    namespace "io.coderf.arklab.plugin_runtime"
     compileSdk project.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId "com.casic.titan.plugin_runtime"
+        applicationId "io.coderf.arklab.plugin_runtime"
         minSdk project.MIN_SDK_VERSION
         targetSdk project.TARGET_SDK_VERSION
         versionCode 1

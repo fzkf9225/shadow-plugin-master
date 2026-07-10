@@ -1,6 +1,6 @@
 buildscript {//这个模块要放在plugins {} 之前
     repositories {
-        maven { setUrl("https://localhost:9224/repository/casic_group/") }
+        maven { setUrl("https://localhost:9224/repository/coderf_group/") }
         maven { setUrl("https://mirrors.tencent.com/nexus/repository/maven-public/") }
         google()
         mavenLocal()
@@ -20,11 +20,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.shadow.plugin'
 
 android {
-    namespace 'com.casic.titan.shadow'
+    namespace 'io.coderf.arklab.shadow'
     compileSdk project.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId "com.casic.titan.shadow"
+        applicationId "io.coderf.arklab.shadow"
         minSdk project.MIN_SDK_VERSION
         targetSdk project.TARGET_SDK_VERSION
         versionCode 1

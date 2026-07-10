@@ -26,6 +26,6 @@ package com.tencent.shadow.dynamic.impl;
 public interface WhiteList {
     String[] sWhiteList = new String[]
             {
-                    "com.casic.titan.common.BaseActivity",
+                    "io.coderf.arklab.common.BaseActivity",
             };
 }

@@ -446,7 +446,7 @@ publishing {
                         username = user
                         password = key
                     }
-                    url "http://localhost:9225/repository/casic_group/"
+                    url "http://localhost:9225/repository/coderf_group/"
                 }
 
                 useLocalCredential = true

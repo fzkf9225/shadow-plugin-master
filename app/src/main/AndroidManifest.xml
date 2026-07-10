@@ -28,7 +28,7 @@
         Activity 路径需要和插件中的匹配，后面会说到
         -->
         <activity
-            android:name="com.casic.titan.plugin_runtime.PluginDefaultProxyActivity"
+            android:name="io.coderf.arklab.plugin_runtime.PluginDefaultProxyActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
@@ -38,7 +38,7 @@
             android:multiprocess="true" />
 
         <activity
-            android:name="com.casic.titan.plugin_runtime.PluginSingleInstance1ProxyActivity"
+            android:name="io.coderf.arklab.plugin_runtime.PluginSingleInstance1ProxyActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|fontScale|uiMode|orientation|screenSize|smallestScreenSize|layoutDirection"
@@ -48,7 +48,7 @@
             android:multiprocess="true" />
 
         <activity
-            android:name="com.casic.titan.plugin_runtime.PluginSingleTask1ProxyActivity"
+            android:name="io.coderf.arklab.plugin_runtime.PluginSingleTask1ProxyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:exported="true"
@@ -57,7 +57,7 @@
             android:theme="@style/PluginContainerActivity"
             android:multiprocess="true"  />
 
-        <activity android:name="com.casic.titan.user.LoginActivity"
+        <activity android:name="io.coderf.arklab.user.LoginActivity"
             android:exported="true"/>
 
         <provider
